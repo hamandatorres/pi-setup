@@ -1,0 +1,39 @@
+[2025-09-16 02:24:31] 🚀 Starting Raspberry Pi system restoration...
+[2025-09-16 02:24:31] 📍 Base directory: /home/carlos/pi-setup
+[2025-09-16 02:24:31] 📝 Log file: /home/carlos/pi-setup/meta/restore-log.txt
+[2025-09-16 02:24:31] 👤 Running as user: carlos
+[2025-09-16 02:24:31] 📋 Restoration plan:
+[2025-09-16 02:24:31]   ✓ Install 289 manual packages
+[2025-09-16 02:24:31]   ✓ Restore services
+[2025-09-16 02:24:35] 🔧 Preparing system for restoration...
+[2025-09-16 02:24:35] 📦 Updating package lists...
+[2025-09-16 02:24:41] 📦 Starting package restoration...
+[2025-09-16 02:24:41] 📦 Installing manually installed packages...
+[2025-09-16 02:24:43] ⚙️ Starting configuration restoration...
+[2025-09-16 02:24:43] 💾 Backing up existing configs to /home/carlos/.config-backup-20250916-022443
+[2025-09-16 02:24:43] ⚠️ System config directory not found, skipping
+[2025-09-16 02:24:43] ⚠️ User config directory not found, skipping
+[2025-09-16 02:24:43] 🔄 Starting service restoration...
+[2025-09-16 02:24:43] 🔄 Reloading systemd daemon...
+[2025-09-16 02:24:44] ⚠️ Cron jobs file not found, skipping
+[2025-09-16 02:24:44] 🔧 Running post-restoration tasks...
+[2025-09-16 02:24:44] 🔍 Detected Bash shell
+[2025-09-16 02:24:44] 🐚 Shell config found: /home/carlos/.bashrc
+[2025-09-16 02:24:44] 💡 Remember to run: source /home/carlos/.bashrc (or restart your terminal)
+[2025-09-16 02:24:44] 🔒 Setting proper permissions...
+[2025-09-16 02:24:56] ✅ Running validation...
+[2025-09-16 02:24:56] ⚠️ validate-restore.sh not found, skipping validation
+[2025-09-16 02:24:56] 💡 Consider creating a validation script for future use
+[2025-09-16 02:24:56] 🎉 System restoration complete!
+[2025-09-16 02:24:56] 📋 Summary:
+[2025-09-16 02:24:56]   • Packages restored from snapshots
+[2025-09-16 02:24:56]   • Configurations restored (backups in ~/.config-backup-*)
+[2025-09-16 02:24:56]   • Services restored and reloaded
+[2025-09-16 02:24:56]   • Cron jobs restored
+[2025-09-16 02:24:56] 
+[2025-09-16 02:24:56] 🔄 Next steps:
+[2025-09-16 02:24:56]   • Restart your terminal or run: source /home/carlos/.bashrc
+[2025-09-16 02:24:56]   • Reboot if system configurations were changed
+[2025-09-16 02:24:56]   • Check the validation results above
+[2025-09-16 02:24:56] 
+[2025-09-16 02:24:56] 📝 Full log saved to: /home/carlos/pi-setup/meta/restore-log.txt
