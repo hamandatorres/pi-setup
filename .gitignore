@@ -111,3 +111,4 @@ configs/user/.config/gh/
 **/*.yml
 **/*token*
 **/*secret*
+**/*.backup
