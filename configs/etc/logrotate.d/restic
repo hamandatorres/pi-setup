@@ -1,0 +1,7 @@
+/mnt/element_drive/logs/restic-system.log {
+  weekly
+  rotate 4
+  compress
+  missingok
+  notifempty
+}

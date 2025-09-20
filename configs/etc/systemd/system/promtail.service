@@ -1,0 +1,11 @@
+[Unit]
+Description=Promtail Log Collector
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/promtail --config.file=/etc/promtail-config.yaml
+Restart=always
+User=root
+
+[Install]
+WantedBy=multi-user.target

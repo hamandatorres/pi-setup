@@ -1,0 +1,7 @@
+positions:
+  ? path: /home/carlos/logs/test.log
+    labels: '{}'
+  : "232"
+  ? path: cursor-journal
+    labels: '{}'
+  : s=e70f9dafe2064d80b0574b6ae5e2b758;i=35bdb;b=56ba28909996464d8fd89b5c1063c8af;m=3b2ee2838c3;t=63db151588df1;x=70ad3fb04b34e4c5

@@ -1,0 +1,77 @@
+discovery.relabel "cron" {
+	targets = [{
+		__address__ = "localhost",
+		__path__    = "/mnt/element_drive/logs/*.log",
+		job         = "cron",
+	}]
+
+	rule {
+		target_label = "host"
+		replacement  = "${HOSTNAME}"
+	}
+}
+
+local.file_match "cron" {
+	path_targets = discovery.relabel.cron.output
+}
+
+loki.source.file "cron" {
+	targets               = local.file_match.cron.targets
+	forward_to            = [loki.write.default.receiver]
+	legacy_positions_file = "/home/carlos/promtail-positions.yaml"
+}
+
+discovery.relabel "smart_health" {
+	targets = [{
+		__address__ = "localhost",
+		__path__    = "/var/log/smart/*.log",
+		job         = "smart_health",
+	}]
+
+	rule {
+		target_label = "host"
+		replacement  = "${HOSTNAME}"
+	}
+}
+
+local.file_match "smart_health" {
+	path_targets = discovery.relabel.smart_health.output
+}
+
+loki.source.file "smart_health" {
+	targets               = local.file_match.smart_health.targets
+	forward_to            = [loki.write.default.receiver]
+	legacy_positions_file = "/home/carlos/promtail-positions.yaml"
+}
+
+http{}
+
+discovery.relabel "apt_update_annotations" {
+	targets = [{
+		__address__ = "localhost",
+		__path__    = "/mnt/element_drive/logs/promtail-annotations.log",
+		job         = "apt-update",
+	}]
+
+	rule {
+		target_label = "host"
+		replacement  = "${HOSTNAME}"
+	}
+}
+
+local.file_match "apt_update_annotations" {
+	path_targets = discovery.relabel.apt_update_annotations.output
+}
+
+loki.source.file "apt_update_annotations" {
+	targets               = local.file_match.apt_update_annotations.targets
+	forward_to            = [loki.write.default.receiver]
+	legacy_positions_file = "/home/carlos/promtail-positions.yaml"
+}
+
+loki.write "default" {
+	endpoint {
+		url = "http://192.168.0.12:3100/loki/api/v1/push"
+	}
+	external_labels = {}
+}

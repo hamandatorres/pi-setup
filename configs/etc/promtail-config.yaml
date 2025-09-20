@@ -1,0 +1,44 @@
+server:
+  http_listen_port: 9080
+  grpc_listen_port: 0
+positions:
+  filename: /home/carlos/promtail-positions.yaml
+clients:
+  - url: http://localhost:3100/loki/api/v1/push  # Changed this line only
+scrape_configs:
+  - job_name: cron
+    static_configs:
+      - targets: [localhost]
+        labels:
+          job: cron
+          __path__: /home/carlos/logs/*.log
+    relabel_configs:
+      - target_label: host
+        replacement: ${HOSTNAME}
+  - job_name: smart_health
+    static_configs:
+      - targets: [localhost]
+        labels:
+          job: smart_health
+          __path__: /var/log/smart/*.log
+    relabel_configs:
+      - target_label: host
+        replacement: ${HOSTNAME}
+  - job_name: apt-update-annotations
+    static_configs:
+      - targets: [localhost]
+        labels:
+          job: apt-update
+          __path__: /home/carlos/logs/promtail-annotations.log
+    relabel_configs:
+      - target_label: host
+        replacement: ${HOSTNAME}
+  - job_name: syslog  # Add this new section
+    static_configs:
+      - targets: [localhost]
+        labels:
+          job: syslog
+          __path__: /var/log/syslog
+    relabel_configs:
+      - target_label: host
+        replacement: ${HOSTNAME}

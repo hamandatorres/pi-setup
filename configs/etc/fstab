@@ -1,0 +1,10 @@
+# Root filesystem on SSD
+UUID=12e2285f-d4f8-4c0b-ab76-1e687b451b46 / ext4 defaults,noatime 0 1
+
+# Boot partition (keep existing)
+/dev/mmcblk0p1 /boot/firmware vfat defaults 0 2
+
+# Swap on SSD
+/swapfile none swap sw 0 0
+
+# zram swap (keep existing if present)

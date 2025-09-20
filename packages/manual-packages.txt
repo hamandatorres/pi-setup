@@ -19,6 +19,7 @@ certbot
 cifs-utils
 cmake
 cmatrix
+command-not-found
 console-setup
 coreutils
 cpio
@@ -53,6 +54,7 @@ firmware-brcm80211
 firmware-libertas
 firmware-misc-nonfree
 firmware-realtek
+fontconfig
 fzf
 gcc-12-base
 gdb
@@ -281,6 +283,7 @@ vim-tiny
 wget
 whiptail
 wireless-tools
+wl-clipboard
 wpasupplicant
 xclip
 xxd

@@ -1,0 +1,6 @@
+Types: deb
+URIs: https://packages.microsoft.com/repos/azure-cli/
+Suites: bookworm
+Components: main
+Architectures: arm64
+Signed-by: /etc/apt/keyrings/microsoft.gpg

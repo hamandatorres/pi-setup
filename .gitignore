@@ -1,0 +1,109 @@
+# Raspberry Pi Setup Toolkit - .gitignore
+
+# ==================================================
+# SENSITIVE CONFIGURATION FILES - DO NOT COMMIT
+# ==================================================
+
+# SSH Keys and certificates (NEVER commit private keys!)
+configs/user/.ssh/id_*
+configs/user/.ssh/*_rsa
+configs/user/.ssh/*_ed25519
+configs/user/.ssh/*_ecdsa
+configs/user/.ssh/config
+configs/user/.ssh/known_hosts*
+configs/user/.ssh/authorized_keys*
+
+# System configuration files that may contain sensitive data
+configs/etc/shadow*
+configs/etc/passwd*
+configs/etc/group*
+configs/etc/gshadow*
+configs/etc/sudoers*
+configs/etc/ssh/ssh_host_*
+configs/etc/ssl/private/
+configs/etc/letsencrypt/
+configs/etc/openvpn/
+configs/etc/wireguard/
+
+# Network configurations (may contain passwords)
+configs/etc/wpa_supplicant/
+configs/etc/NetworkManager/
+configs/etc/systemd/network/
+
+# Database and application secrets
+configs/etc/mysql/
+configs/etc/postgresql/
+configs/user/.config/*/secrets*
+configs/user/.config/*/credentials*
+configs/user/.config/*/.env*
+
+# Personal data and caches
+configs/user/.bash_history
+configs/user/.zsh_history
+configs/user/.lesshst
+configs/user/.viminfo
+configs/user/.config/*/cache/
+configs/user/.config/*/logs/
+configs/user/.config/*/tmp/
+
+# ==================================================
+# LARGE OR TEMPORARY FILES
+# ==================================================
+
+# Log files (can be regenerated)
+*.log
+meta/*.log
+meta/*-log.txt
+
+# Package caches and temporary files
+configs/etc/apt/listchanges.db
+configs/etc/dpkg/
+configs/user/.cache/
+configs/user/.local/share/Trash/
+
+# Large directories that aren't essential for restoration
+configs/etc/alternatives/
+configs/etc/fonts/
+configs/user/.local/share/fonts/
+
+# ==================================================
+# OPTIONAL: COMMENT OUT IF YOU WANT TO INCLUDE
+# ==================================================
+
+# Uncomment these lines if you want to exclude certain package lists
+# (useful if you want to share the toolkit but not reveal all installed software)
+# packages/all-packages.txt
+# packages/pip-all-packages.txt
+# packages/npm-global-packages.txt
+
+# Uncomment if you don't want to share your cron jobs
+# services/cron-jobs.txt
+
+# ==================================================
+# STANDARD IGNORES
+# ==================================================
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Temporary files
+*~
+*.tmp
+*.swp
+*.swo
+.#*
+
+# IDE files
+.vscode/
+.idea/
+*.code-workspace
+
+# Backup files created during restoration
+*-backup-*
+*.backup

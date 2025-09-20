@@ -1,0 +1,42 @@
+logging {
+  level = "info"
+}
+
+// Collect system logs
+loki.source.journal "system" {
+  forward_to = [loki.write.local.receiver]
+  labels    = {job = "systemd-journal", instance = "raspberrypi"}
+}
+
+// Collect syslog
+loki.source.file "syslog" {
+  targets = [
+    {__path__ = "/var/log/syslog", job = "syslog", instance = "raspberrypi"},
+    {__path__ = "/var/log/messages", job = "messages", instance = "raspberrypi"},
+  ]
+  forward_to = [loki.write.local.receiver]
+}
+
+// Forward logs to local Loki
+loki.write "local" {
+  endpoint {
+    url = "http://localhost:3100/loki/api/v1/push"
+  }
+}
+
+// Keep your existing Prometheus config
+prometheus.exporter.unix "default" {
+  include_exporter_metrics = true
+  disable_collectors       = ["mdadm"]
+}
+
+prometheus.scrape "default" {
+  targets = array.concat(
+    prometheus.exporter.unix.default.targets,
+    [{
+      job         = "alloy",
+      __address__ = "127.0.0.1:12345",
+    }],
+  )
+  forward_to = []
+}
